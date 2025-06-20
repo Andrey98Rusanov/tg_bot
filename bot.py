@@ -2,10 +2,14 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import InputFile, ReplyKeyboardMarkup, KeyboardButton
 from aiogram.utils import executor
 import logging
+import os
 
-# 🔐 Вставь сюда токен своего бота от @BotFather
-API_TOKEN = '8055661227:AAHy7p1VijuH_o_otsaRtzKCQ6RZ69YlylI'
+# 🔐 Получаем токен из переменной окружения
+API_TOKEN = os.getenv('BOT_TOKEN')
 CHANNEL_USERNAME = '@RusanovMentor'
+
+if not API_TOKEN:
+    raise ValueError("BOT_TOKEN environment variable is not set")
 
 logging.basicConfig(level=logging.INFO)
 
